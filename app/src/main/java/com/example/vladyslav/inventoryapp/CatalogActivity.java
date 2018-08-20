@@ -86,7 +86,10 @@ public class CatalogActivity extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 int currentID = cursor.getInt(idColumnIndex);
                 String currentProductName = cursor.getString(productNameColumnIndex);
-                int currentPrice = cursor.getInt(priceColumnIndex);
+                float currentPrice =
+                        cursor.getFloat(priceColumnIndex) == 0 ?
+                        0 :
+                        cursor.getFloat(priceColumnIndex)/ 100;
                 int currentQuantity = cursor.getInt(quantityColumnIndex);
                 String currentSupplierName = cursor.getString(supplierNameColumnIndex);
                 String currentSupplierPhone = cursor.getString(supplierPhoneColumnIndex);
